@@ -1,0 +1,66 @@
+@layer base {
+  :root {
+    @import 'e:\\panaversity\\design-system\\tokens.css';
+    
+    /* Shadcn compatibility mapping */
+    --background: var(--bg-base);
+    --foreground: var(--text-primary);
+    --card: var(--bg-surface);
+    --card-foreground: var(--text-primary);
+    --popover: var(--bg-elevated);
+    --popover-foreground: var(--text-primary);
+    --primary: var(--accent);
+    --primary-foreground: #0A0A0A;
+    --secondary: var(--bg-elevated);
+    --secondary-foreground: var(--text-primary);
+    --muted: var(--bg-surface);
+    --muted-foreground: var(--text-muted);
+    --accent: var(--accent-dim);
+    --accent-foreground: var(--accent);
+    --destructive: var(--error);
+    --destructive-foreground: var(--text-primary);
+    --border: var(--border-subtle);
+    --input: var(--border-subtle);
+    --ring: var(--accent);
+    --radius: var(--radius-md);
+  }
+
+  .dark {
+    /* Ready by default */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-[var(--border-subtle)];
+  }
+  body {
+    @apply bg-[var(--bg-base)] text-[var(--text-primary)] font-sans antialiased overflow-x-hidden;
+  }
+}
+
+.anthropic-shadow {
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 4px 24px rgba(0,0,0,0.4);
+}
+
+.card-hover-border {
+  @apply transition-colors duration-100;
+}
+.card-hover-border:hover {
+  border-color: #2A2A2A;
+}
+
+.btn-primary {
+  @apply rounded-lg font-medium bg-[#D4A574] text-[#0A0A0A] transition-all hover:opacity-90 active:scale-[0.98] inline-flex items-center justify-center;
+}
+.btn-secondary {
+  @apply rounded-lg font-medium border border-[#1F1F1F] text-[#EDEDEC] transition-all hover:opacity-90 active:scale-[0.98] inline-flex items-center justify-center bg-transparent;
+}
+
+.anthropic-input {
+  @apply bg-[#0A0A0A] border border-[#1F1F1F] rounded-lg focus:outline-none focus:border-[#D4A574] focus:ring-1 focus:ring-[#D4A574]/20 transition-all text-[#EDEDEC] placeholder:text-[#8E8E8E];
+}
+
+.anthropic-card {
+  @apply bg-[#111111] border border-[#1F1F1F] rounded-xl p-5 card-hover-border anthropic-shadow;
+}
