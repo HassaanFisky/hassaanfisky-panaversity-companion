@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 import { ChevronRight, Search, Bell } from "lucide-react";
 
 const NAV_LINKS = [
-  { href: "/learn", label: "Protocol Archive" },
-  { href: "/tutor", label: "Cognitive Engine" },
-  { href: "/resources", label: "Source nodes" },
+  { href: "https://panaversity-h1-robotics.vercel.app", label: "Textbook (H1)" },
+  { href: "https://hackathon-2-todo-iota.vercel.app", label: "Todo Engine (H2)" },
+  { href: "https://hassaanfisky-panaversity-learnflow.vercel.app", label: "LearnFlow (H3)" },
 ];
 
 export function Navbar() {

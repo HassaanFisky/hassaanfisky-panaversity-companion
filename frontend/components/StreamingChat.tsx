@@ -39,7 +39,7 @@ export default function StreamingChat({ context, onClose }: StreamingChatProps) 
     setLoading(true);
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_COMPANION_BACKEND_URL}/chat/stream`, {
+      const response = await fetch('/api/chat/stream', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 

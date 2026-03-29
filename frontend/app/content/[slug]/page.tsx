@@ -113,8 +113,8 @@ Cloud LLMs provide the heavy-duty reasoning, multi-language support, and vast kn
     return (
       <div className="h-[60vh] flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-8 h-8 rounded-lg bg-[#1A1A1A] border border-[#1F1F1F] flex items-center justify-center animate-spin text-[#D4A574]" />
-          <p className="font-medium text-[#8E8E8E] text-xs uppercase tracking-widest">Loading Module...</p>
+          <div className="w-9 h-9 rounded-lg bg-bg-surface border border-border-fine flex items-center justify-center animate-spin text-accent" />
+          <p className="font-bold text-text-muted text-[10px] uppercase tracking-[0.3em]">Loading Module...</p>
         </div>
       </div>
     );
@@ -123,58 +123,58 @@ Cloud LLMs provide the heavy-duty reasoning, multi-language support, and vast kn
   return (
     <div className="min-h-full flex relative pb-20">
       {/* Content Area */}
-      <div className={`flex-1 transition-all duration-300 ${showAiChat ? 'mr-[400px]' : ''}`}>
-        <header className="flex items-center justify-between mb-8 pb-4 border-b border-[#1F1F1F]">
+      <div className={`flex-1 transition-editorial ${showAiChat ? 'mr-[400px]' : ''}`}>
+        <header className="flex items-center justify-between mb-8 pb-4 border-b border-border-fine">
           <div className="flex items-center gap-4">
             <button 
               onClick={() => router.back()} 
-              className="p-2 hover:bg-[#111111] rounded-lg border border-transparent hover:border-[#1F1F1F] transition-all text-[#8E8E8E] hover:text-[#EDEDEC]"
+              className="p-2.5 bg-white hover:bg-bg-surface rounded-xl border border-border-fine transition-editorial text-text-muted hover:text-accent shadow-sm"
             >
               <ArrowLeft size={18} />
             </button>
             <div className="flex items-center gap-3">
-              <span className="text-[#8E8E8E] font-medium text-xs uppercase tracking-widest">Panaversity / Modules /</span>
-              <span className="font-semibold text-sm tracking-tight text-[#EDEDEC] capitalize">{slug.replace("-", " ")}</span>
+              <span className="text-text-muted font-bold text-[10px] uppercase tracking-[0.3em]">Panaversity / Modules /</span>
+              <span className="font-serif font-bold text-[15px] tracking-tight text-text-primary capitalize">{slug.replace("-", " ")}</span>
             </div>
           </div>
           
           <button 
             onClick={() => setShowAiChat(!showAiChat)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+            className={`btn-tactile flex items-center gap-2 px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-[0.2em] transition-editorial ${
               showAiChat 
-                ? 'bg-[#1A1A1A] border-[#1F1F1F] text-[#D4A574] border' 
-                : 'btn-secondary border-[#1F1F1F] text-[#8E8E8E] hover:text-[#EDEDEC]'
+                ? 'bg-bg-base border-border-fine text-accent border shadow-sm' 
+                : 'bg-white border-border-fine text-text-muted hover:text-text-primary border shadow-sm'
             }`}
           >
             <MessageSquare size={16} />
             {showAiChat ? 'Close Companion' : 'AI Companion'}
-            {!showAiChat && <Sparkles size={14} className="text-[#D4A574]" />}
+            {!showAiChat && <Sparkles size={14} className="text-accent" />}
           </button>
         </header>
 
         <motion.article 
           initial={{ opacity: 0, scale: 0.99, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-3xl mx-auto"
         >
-          <div className="anthropic-card bg-[#0A0A0A] p-8 md:p-12 relative overflow-hidden">
-            <ReactMarkdown className="prose prose-invert max-w-none prose-p:text-[#EDEDEC] prose-p:leading-8 prose-headings:text-[#EDEDEC] prose-headings:font-semibold prose-headings:tracking-tight prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-[#D4A574] prose-blockquote:border-[#D4A574] prose-blockquote:bg-[#111111] prose-blockquote:p-4 prose-blockquote:not-italic prose-blockquote:rounded-r-lg">
+          <div className="card-humanist bg-white p-8 md:p-14 relative overflow-hidden">
+            <ReactMarkdown className="prose prose-stone max-w-none prose-p:text-text-secondary prose-p:leading-relaxed prose-headings:text-text-primary prose-headings:font-serif prose-headings:font-bold prose-headings:tracking-tight prose-h1:text-4xl prose-h2:text-2xl prose-h3:text-xl prose-a:text-accent prose-blockquote:border-accent prose-blockquote:bg-bg-base prose-blockquote:p-6 prose-blockquote:not-italic prose-blockquote:rounded-r-xl prose-blockquote:font-serif">
               {content}
             </ReactMarkdown>
 
             {/* End of Section Divider */}
-            <div className="pt-16 pb-8 flex flex-col items-center gap-6">
-              <div className="w-16 h-px bg-[#1F1F1F]" />
-              <div className="text-center space-y-6">
-                 <h3 className="text-xl font-semibold tracking-tight text-[#EDEDEC]">Mastered this Topic?</h3>
-                 <div className="flex items-center justify-center gap-4">
-                    <Link href="/" className="btn-primary px-6 py-2">
+            <div className="pt-20 pb-8 flex flex-col items-center gap-8">
+              <div className="w-16 h-px bg-border-fine" />
+              <div className="text-center space-y-8">
+                 <h3 className="text-2xl font-serif font-bold tracking-tight text-text-primary">Mastered this Topic?</h3>
+                 <div className="flex items-center justify-center gap-5">
+                    <Link href="/" className="btn-tactile px-8 py-3.5 bg-text-primary text-white text-[11px] font-bold uppercase tracking-[0.2em] rounded-xl shadow-lg shadow-text-primary/10">
                       Complete Module
                     </Link>
                     <button 
                       onClick={() => setShowAiChat(true)}
-                      className="btn-secondary px-6 py-2"
+                      className="btn-tactile px-8 py-3.5 bg-white border border-border-fine text-text-secondary hover:text-accent text-[11px] font-bold uppercase tracking-[0.2em] rounded-xl shadow-sm"
                     >
                       Ask Question
                     </button>
@@ -187,12 +187,14 @@ Cloud LLMs provide the heavy-duty reasoning, multi-language support, and vast kn
 
       {/* Persistent AI Chat Panel */}
       <aside 
-        className={`fixed top-14 right-0 bottom-0 w-[400px] border-l border-[#1F1F1F] bg-[#0A0A0A] transform transition-transform duration-300 z-[40] ${showAiChat ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed top-0 right-0 bottom-0 w-[400px] border-l border-border-fine bg-bg-base transform transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-[40] shadow-2xl ${showAiChat ? 'translate-x-0' : 'translate-x-full'}`}
       >
-        <StreamingChat 
-          context={content} 
-          onClose={() => setShowAiChat(false)}
-        />
+        <div className="pt-20 h-full"> 
+          <StreamingChat 
+            context={content} 
+            onClose={() => setShowAiChat(false)}
+          />
+        </div>
       </aside>
     </div>
   );
