@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { fadeUp } from "./motion";
 
 interface ContentCardProps {
   title: string;
@@ -14,27 +13,32 @@ interface ContentCardProps {
 
 export default function ContentCard({ title, description, slug, icon }: ContentCardProps) {
   return (
-    <Link href={`/content/${slug}`} className="block group h-full">
-      <div className="h-full flex flex-col justify-between rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-6 shadow-[var(--shadow-card)] hover:border-[var(--border-muted)] hover:-translate-y-[1px] transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)]">
-        <div className="space-y-4">
-          <div className="w-10 h-10 rounded-[var(--radius-sm)] flex items-center justify-center bg-[var(--accent-dim)] text-[var(--accent)] border border-[var(--border-muted)]/10">
+    <Link href={`/content/${slug}`} className="block group h-full transition-transform active:scale-[0.98]">
+      <div className="h-full flex flex-col justify-between rounded-2xl border-fine bg-white p-8 shadow-card hover:border-accent/30 hover:shadow-lg transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden relative">
+        <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity">
+          <ArrowUpRight className="w-5 h-5 text-accent" />
+        </div>
+        
+        <div className="space-y-6">
+          <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-bg-surface text-accent border border-fine group-hover:bg-accent/10 transition-colors">
             {icon}
           </div>
-          <div className="space-y-1.5">
-            <h3 className="text-[17px] font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors tracking-tight">
+          <div className="space-y-3">
+            <h3 className="text-2xl font-serif font-medium text-text-primary group-hover:text-accent transition-colors tracking-tight">
               {title}
             </h3>
-            <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed line-clamp-2">
+            <p className="text-[14px] text-text-muted leading-relaxed font-medium">
               {description}
             </p>
           </div>
         </div>
 
-        <div className="mt-8 flex items-center justify-between text-[var(--text-muted)] group-hover:text-[var(--accent)] transition-colors">
-          <span className="text-[10px] uppercase tracking-[0.1em] font-bold">Explore Module</span>
-          <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+        <div className="mt-12 flex items-center gap-4 text-text-muted group-hover:text-accent transition-colors">
+          <div className="h-[1px] w-6 bg-border-fine group-hover:bg-accent/40" />
+          <span className="text-[10px] uppercase tracking-[0.3em] font-bold">Node Details</span>
         </div>
       </div>
     </Link>
   );
 }
+

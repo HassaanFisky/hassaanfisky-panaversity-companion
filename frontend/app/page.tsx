@@ -1,6 +1,6 @@
 "use client";
 
-import { Sparkles, LayoutDashboard, Terminal, ArrowRight } from "lucide-react";
+import { Sparkles, LayoutDashboard, Terminal, ArrowRight, Circle } from "lucide-react";
 import ContentCard from "@/components/ContentCard";
 import { MotionDiv, fadeUp, stagger } from "@/components/motion";
 import Link from "next/link";
@@ -28,98 +28,80 @@ const TOPICS = [
 
 export default function Home() {
   return (
-    <div className="space-y-24 pb-24 relative overflow-hidden">
-       {/* Radial Gradients */}
-       <div 
-          className="absolute inset-0 z-0 pointer-events-none"
-          style={{
-            background: `
-              radial-gradient(ellipse 900px 600px at 50% -100px, rgba(212,165,116,0.06), transparent 70%),
-              var(--bg-base)`
-          }}
-        />
-
-        {/* Noise Texture */}
-        <svg className="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-[0.02]">
-          <filter id="noise">
-            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
-            <feColorMatrix type="saturate" values="0"/>
-          </filter>
-          <rect width="100%" height="100%" filter="url(#noise)"/>
-        </svg>
-
-      {/* Hero Header */}
+    <div className="space-y-32 pb-32 pt-16 relative">
       <MotionDiv 
         variants={fadeUp}
         initial="initial"
         animate="animate"
-        className="relative z-10 pt-16 flex flex-col items-center text-center space-y-10"
+        className="relative z-10 flex flex-col items-center text-center"
       >
-        <div className="text-[11px] font-medium tracking-[0.08em] uppercase text-[var(--text-muted)]">
-          Panaversity Hackathon IV
+        <div className="flex items-center gap-4 mb-12">
+          <div className="h-[1px] w-8 bg-accent/30 rounded-full" />
+          <span className="text-[10px] font-bold text-accent uppercase tracking-[0.4em]">Panaversity System v4.0</span>
+          <div className="h-[1px] w-8 bg-accent/30 rounded-full" />
         </div>
 
-        <div className="space-y-6 max-w-3xl mx-auto flex flex-col items-center justify-center">
-          <h1 className="text-[52px] font-semibold tracking-[-0.03em] leading-[1.1] text-[var(--text-primary)]">
-            Your Personalized
+        <div className="space-y-10 max-w-4xl mx-auto flex flex-col items-center">
+          <h1 className="text-6xl md:text-[84px] font-serif font-medium tracking-tight leading-[1.05] text-text-primary">
+            Refined Learning 
             <br />
-            <span style={{ color: "var(--accent)" }}>AI Study Companion.</span>
+            <span className="text-accent italic">Humanist Future.</span>
           </h1>
-          <p className="text-[17px] text-[var(--text-secondary)] font-medium max-w-xl leading-relaxed">
-            Unlock your potential in AI Ethics, Modern Web, and Hybrid Systems with the power of Groq LPU and Llama 3.3.
+          <p className="text-xl md:text-2xl text-text-muted font-medium max-w-2xl leading-[1.6]">
+            Accelerating your technical mastery in AI Ethics and Modern Architecture through a world-class digital companion.
           </p>
         </div>
 
-        <div className="flex items-center gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row items-center gap-6 mt-16">
           <Link
-            href="/learn"
-            className="bg-[var(--accent)] text-[#0A0A0A] font-medium text-[13px] px-8 py-3 rounded-[var(--radius-sm)] hover:brightness-110 active:scale-[0.97] transition-all duration-150 flex items-center gap-2 shadow-sm"
+            href="/content/ai-ethics"
+            className="btn-tactile btn-accent px-10 py-4 font-bold text-[12px] uppercase tracking-widest flex items-center gap-3 rounded-lg shadow-sm"
           >
-            Start Learning <ArrowRight className="h-4 w-4" />
+            Access Core <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
-            href="/curriculum"
-            className="bg-transparent border border-[var(--border-muted)] text-[var(--text-primary)] text-[13px] font-medium px-8 py-3 rounded-[var(--radius-sm)] hover:border-[var(--border-active)] hover:bg-[var(--bg-elevated)] transition-all duration-150"
+            href="/coach"
+            className="btn-tactile border border-fine bg-white text-text-primary px-10 py-4 font-bold text-[12px] uppercase tracking-widest rounded-lg hover:border-accent/40"
           >
-            View Curriculum
+            System Map
           </Link>
         </div>
 
-        {/* Stats row */}
-        <div className="flex items-center border border-[var(--border-subtle)] rounded-[var(--radius-md)] bg-[var(--bg-surface)] mt-12 overflow-hidden shadow-[var(--shadow-card)]">
-          <div className="px-10 py-6 flex flex-col items-center gap-1 border-r border-[var(--border-subtle)]">
-            <span className="text-2xl font-bold text-[var(--text-primary)] tracking-tight">32%</span>
-            <span className="text-[10px] text-[var(--text-muted)] uppercase tracking-widest font-bold">Progress</span>
+        {/* Stats row - Refined Tactile Version */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-fine rounded-2xl bg-white mt-32 overflow-hidden shadow-card w-full max-w-4xl mx-auto">
+          <div className="px-10 py-10 flex flex-col items-center gap-3 border-b md:border-b-0 md:border-r border-fine group hover:bg-bg-surface/50 transition-colors">
+            <span className="text-4xl font-serif font-medium text-text-primary tracking-tight">32%</span>
+            <span className="text-[10px] text-text-muted uppercase tracking-[0.3em] font-bold">Progress Accuracy</span>
           </div>
-          <div className="px-10 py-6 flex flex-col items-center gap-1 border-r border-[var(--border-subtle)]">
-            <span className="text-2xl font-bold text-[var(--text-primary)] tracking-tight">3/12</span>
-            <span className="text-[10px] text-[var(--text-muted)] uppercase tracking-widest font-bold">Modules</span>
+          <div className="px-10 py-10 flex flex-col items-center gap-3 border-b md:border-b-0 md:border-r border-fine group hover:bg-bg-surface/50 transition-colors">
+            <span className="text-4xl font-serif font-medium text-text-primary tracking-tight">3/12</span>
+            <span className="text-[10px] text-text-muted uppercase tracking-[0.3em] font-bold">Validated Nodes</span>
           </div>
-          <div className="px-10 py-6 flex flex-col items-center gap-1">
-            <span className="text-2xl font-bold text-[var(--text-primary)] tracking-tight">8</span>
-            <span className="text-[10px] text-[var(--text-muted)] uppercase tracking-widest font-bold">Sessions</span>
+          <div className="px-10 py-10 flex flex-col items-center gap-3 group hover:bg-bg-surface/50 transition-colors">
+            <span className="text-4xl font-serif font-medium text-text-primary tracking-tight">8</span>
+            <span className="text-[10px] text-text-muted uppercase tracking-[0.3em] font-bold">Active Sessions</span>
           </div>
         </div>
       </MotionDiv>
 
-      <section className="relative z-10">
-        <div className="flex items-center justify-between mb-8">
-            <h2 className="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-[0.15em]">Course Modules</h2>
-            <div className="h-px flex-1 bg-[var(--border-subtle)] ml-4" />
+      <section className="relative z-10 pt-20">
+        <div className="flex items-center gap-6 mb-16">
+            <h2 className="text-[11px] font-bold text-text-muted uppercase tracking-[0.3em]">Module Archive</h2>
+            <div className="h-[0.8px] flex-1 bg-border-fine" />
         </div>
         
-        {/* Main Grid */}
         <MotionDiv 
           variants={stagger}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
         >
           {TOPICS.map((topic, index) => (
             <MotionDiv
               key={topic.slug}
               variants={fadeUp}
+              className="group"
             >
               <ContentCard 
                 title={topic.title}
@@ -134,3 +116,4 @@ export default function Home() {
     </div>
   );
 }
+

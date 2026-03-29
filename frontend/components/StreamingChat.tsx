@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Bot, RefreshCw, Send, Sparkles, User, X } from "lucide-react";
+import { Bot, RefreshCw, Send, Sparkles, User, X, Binary } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
@@ -89,23 +89,23 @@ export default function StreamingChat({ context, onClose }: StreamingChatProps) 
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#111111]/90 backdrop-blur-xl border-l border-[#1F1F1F] relative z-[60] shadow-2xl">
+    <div className="flex flex-col h-full bg-white border-l border-fine relative z-[60] shadow-2xl">
       {/* Chat Header */}
-      <div className="h-14 border-b border-[#1F1F1F] flex items-center justify-between px-6 bg-[#0A0A0A] shrink-0">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-[#1A1A1A] border border-[#1F1F1F] flex items-center justify-center text-[#D4A574]">
-            <Bot size={18} />
+      <div className="h-16 border-b border-fine flex items-center justify-between px-8 bg-bg-base shrink-0">
+        <div className="flex items-center gap-4">
+          <div className="w-10 h-10 rounded-lg bg-white border border-fine flex items-center justify-center text-accent shadow-sm">
+            <Binary size={18} />
           </div>
           <div>
-            <h3 className="font-semibold text-sm text-[#EDEDEC]">AI Companion</h3>
-            <div className="flex items-center gap-1.5">
-               <span className="w-1.5 h-1.5 rounded-full bg-[#3DD68C]" />
-               <span className="text-[10px] font-medium uppercase tracking-widest text-[#8E8E8E]">Streaming</span>
+            <h3 className="font-serif font-medium text-text-primary text-sm leading-none">AI Companion</h3>
+            <div className="flex items-center gap-1.5 mt-1.5">
+               <span className="w-1.5 h-1.5 rounded-full bg-success/60 animate-pulse" />
+               <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-text-muted">Node Active</span>
             </div>
           </div>
         </div>
         {onClose && (
-          <button onClick={onClose} className="p-2 hover:bg-[#1A1A1A] rounded-lg transition-colors group text-[#8E8E8E] hover:text-[#EDEDEC]">
+          <button onClick={onClose} className="btn-tactile p-2 hover:bg-bg-surface rounded-lg transition-colors group text-text-muted hover:text-text-primary">
             <X size={18} />
           </button>
         )}
@@ -114,58 +114,67 @@ export default function StreamingChat({ context, onClose }: StreamingChatProps) 
       {/* Messages Area */}
       <div 
         ref={scrollRef} 
-        className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth"
+        className="flex-1 overflow-y-auto p-8 space-y-10 scroll-smooth selection:bg-accent/10"
       >
         {messages.map((msg, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`flex items-start gap-4 ${msg.role === "user" ? "flex-row-reverse" : ""}`}
+            className={`flex items-start gap-5 ${msg.role === "user" ? "flex-row-reverse" : ""}`}
           >
-            <div className={`w-8 h-8 shrink-0 rounded-lg flex items-center justify-center border  ${msg.role === "assistant" ? "bg-[#1A1A1A] text-[#D4A574] border-[#1F1F1F]" : "bg-[#2A2A2A] text-[#EDEDEC] border-transparent"}`}>
+            <div className={`w-9 h-9 shrink-0 rounded-lg flex items-center justify-center border shadow-sm ${msg.role === "assistant" ? "bg-white text-accent border-fine" : "bg-bg-surface text-text-primary border-transparent"}`}>
                {msg.role === "assistant" ? <Bot size={16} /> : <User size={16} />}
             </div>
-            <div className={`flex flex-col gap-1 max-w-[80%] ${msg.role === "user" ? "items-end" : "items-start"}`}>
-               <div className={`text-sm leading-6 ${msg.role === "user" ? "text-[#EDEDEC] bg-[#1A1A1A] border border-[#1F1F1F] px-4 py-3 rounded-xl rounded-tr-sm" : "text-[#EDEDEC] px-1 py-2 prose prose-invert max-w-none prose-p:leading-6 prose-a:text-[#D4A574]"}`}>
+            <div className={`flex flex-col gap-1.5 max-w-[85%] ${msg.role === "user" ? "items-end" : "items-start"}`}>
+               <div className={`
+                 text-[15px] leading-relaxed
+                 ${msg.role === "user" 
+                   ? "text-text-primary bg-bg-surface/50 border border-fine px-5 py-3.5 rounded-2xl rounded-tr-sm font-medium" 
+                   : "text-text-secondary font-serif px-1 py-1 prose prose-stone max-w-none prose-p:leading-relaxed prose-a:text-accent font-medium"}
+               `}>
                   {msg.role === "user" ? msg.content : <ReactMarkdown>{msg.content}</ReactMarkdown>}
                </div>
             </div>
           </motion.div>
         ))}
         {loading && !messages[messages.length - 1].content && (
-           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg bg-[#1A1A1A] border border-[#1F1F1F] flex items-center justify-center text-[#D4A574] opacity-50">
+           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-5">
+              <div className="w-9 h-9 rounded-lg bg-white border border-fine flex items-center justify-center text-accent opacity-40 shadow-sm">
                  <Bot size={16} />
               </div>
-              <div className="flex gap-1 p-2 items-center">
-                 <span className="w-1 h-1 rounded-full bg-[#8E8E8E] animate-bounce" />
-                 <span className="w-1 h-1 rounded-full bg-[#8E8E8E] animate-bounce delay-150" />
-                 <span className="w-1 h-1 rounded-full bg-[#8E8E8E] animate-bounce delay-300" />
+              <div className="flex gap-1.5 p-3 items-center bg-bg-surface/30 rounded-xl px-4 border border-fine/30">
+                 <span className="w-1 h-1 rounded-full bg-accent/40 animate-bounce" />
+                 <span className="w-1 h-1 rounded-full bg-accent/40 animate-bounce delay-150" />
+                 <span className="w-1 h-1 rounded-full bg-accent/40 animate-bounce delay-300" />
               </div>
            </motion.div>
         )}
       </div>
 
       {/* Input Area */}
-      <div className="p-4 border-t border-[#1F1F1F] bg-[#0A0A0A] shrink-0">
-        <div className="relative">
+      <div className="p-6 border-t border-fine bg-bg-base shrink-0">
+        <div className="relative group">
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSend(); } }}
             placeholder="Ask AI Companion..."
-            className="w-full anthropic-input py-3 pl-4 pr-12 h-14 resize-none"
+            className="w-full bg-white border border-fine rounded-xl py-4 pl-5 pr-14 h-16 resize-none focus:outline-none focus:border-accent/40 focus:ring-4 focus:ring-accent/[0.03] transition-all text-text-primary font-medium placeholder:text-text-muted/60 shadow-sm"
           />
           <button 
             onClick={handleSend}
             disabled={!input.trim() || loading}
-            className="absolute right-2 top-2 bottom-2 w-10 flex items-center justify-center text-[#8E8E8E] hover:text-[#D4A574] disabled:opacity-50 disabled:hover:text-[#8E8E8E] transition-colors"
+            className="absolute right-3 top-3 bottom-3 w-10 flex items-center justify-center rounded-lg bg-bg-surface text-text-muted hover:text-accent hover:bg-white hover:border border-transparent hover:border-fine disabled:opacity-30 disabled:pointer-events-none transition-all duration-300"
           >
             {loading ? <RefreshCw size={18} className="animate-spin" /> : <Send size={18} />}
           </button>
         </div>
+        <p className="text-[9px] font-bold text-text-muted uppercase tracking-[0.3em] mt-4 text-center">
+          Panaversity AI Engine Node
+        </p>
       </div>
     </div>
   );
 }
+
