@@ -7,8 +7,8 @@ import { ChevronRight, Search, Bell } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "https://panaversity-h1-robotics.vercel.app", label: "Textbook (H1)" },
-  { href: "https://hackathon-2-todo-iota.vercel.app", label: "Todo Engine (H2)" },
-  { href: "https://hassaanfisky-panaversity-learnflow.vercel.app", label: "LearnFlow (H3)" },
+  { href: "https://panaversity-h2-todo-prod.vercel.app", label: "Todo Engine (H2)" },
+  { href: "https://panaversity-h3-learnflow-prod.vercel.app", label: "LearnFlow (H3)" },
 ];
 
 export function Navbar() {
