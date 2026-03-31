@@ -8,6 +8,8 @@
   --color-text-secondary: #5F5854;
   --color-text-muted: #8A857D;
   --color-accent: #D97757;
+  --color-accent-soft: rgba(217, 119, 87, 0.08); /* ADDED: H0 parity */
+  --color-success: #529E66; /* ADDED: H0 parity */
   --color-border-fine: #E5E0D8;
   --font-lora: "Lora", serif;
   --font-inter: "Inter", sans-serif;
@@ -23,6 +25,8 @@
   --text-secondary: #5F5854;
   --text-muted: #8A857D;
   --accent: #D97757;
+  --accent-soft: rgba(217, 119, 87, 0.08);
+  --success: #529E66;
   --border-fine: #E5E0D8;
 }
 
